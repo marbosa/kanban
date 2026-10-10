@@ -1,0 +1,22 @@
+# Pastas de build do CMake/CLion
+cmake-build-*/
+cmake-build-debug/
+
+build/
+
+# Configurações do VSCode
+.vscode/
+
+# Configurações do CLion
+.idea/
+
+# Arquivos de cache do CMake
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake
+Makefile
+
+# Binários compilados
+*.o
+*.out
+*.exe
