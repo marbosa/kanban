@@ -4,6 +4,7 @@
 #define KANBAN_ENTIDADES_H
 
 #include "dominios.h"
+
 // ------------------------------------------------------------
 // Entidade: Projeto
 // Atributos: identificador, nome, descricao, inicio, termino
