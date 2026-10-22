@@ -1,6 +1,6 @@
 #include <iostream>
 #include "dominios.h"
-
+#include "entidades.h"
 using namespace std;
 //main teste tem nada de significante,  so teste msm
 int total = 0;

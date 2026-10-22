@@ -7,4 +7,6 @@ add_executable(kanban
         main.cpp
         dominios.cpp
         dominios.h
+        entidades.cpp
+        entidades.h
 )
