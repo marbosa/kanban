@@ -34,4 +34,22 @@ public:
     Timestamp getTermino() const;
 };
 
+// ------------------------------------------------------------
+// Entidade: Quadro
+// Atributos: identificador, nome, limite
+// ---------------------------------------------------
+class Quadro {
+    private:
+        Identificador identificador;
+        Nome nome;
+        Limite limite;
+    public:
+        void setIdentificador(const Identificador&);
+        Identificador getIdentificador() const;
+        void setNome(const Nome&);
+        Nome getNome() const;
+        void setLimite(const Limite&);
+        Limite getLimite() const;
+};
+
 #endif //KANBAN_ENTIDADES_H
