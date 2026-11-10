@@ -34,4 +34,38 @@ public:
     Timestamp getTermino() const;
 };
 
+// ------------------------------------------------------------
+// Entidade: Pessoa
+// Atributos: email (PK), nome, senha, papel
+// ------------------------------------------------------------
+/** @brief Entidade Pessoa: usuario do sistema (gestor ou desenvolvedor).
+ *  O email e a chave primaria e nao deve ser alterado apos o cadastro. */
+class Pessoa {
+private:
+    Email email;
+    Nome nome;
+    Senha senha;
+    Papel papel;
+public:
+    /** @brief Define o email (chave primaria). */
+    void setEmail(const Email&);
+    /** @brief Retorna o email. */
+    Email getEmail() const;
+
+    /** @brief Define o nome. */
+    void setNome(const Nome&);
+    /** @brief Retorna o nome. */
+    Nome getNome() const;
+
+    /** @brief Define a senha. */
+    void setSenha(const Senha&);
+    /** @brief Retorna a senha. */
+    Senha getSenha() const;
+
+    /** @brief Define o papel (GESTOR ou DESENVOLVEDOR). */
+    void setPapel(const Papel&);
+    /** @brief Retorna o papel. */
+    Papel getPapel() const;
+};
+
 #endif //KANBAN_ENTIDADES_H

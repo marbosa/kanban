@@ -271,3 +271,126 @@ void Tamanho::setTamanho(const string& tamanho) {
 string Tamanho::getTamanho() const {
     return tamanho;
 }
+
+// ------------------------------------------------------------
+// Dominio: Email
+// Regra: parte-local@dominio
+// ------------------------------------------------------------
+static bool ehLetraMinuscula(char c) {
+    return c >= 'a' && c <= 'z';
+}
+
+void Email::validar(const string& v) {
+    size_t arroba = v.find('@');
+    if (arroba == string::npos || v.find('@', arroba + 1) != string::npos) {
+        throw invalid_argument("Email invalido.");
+    }
+
+    string local = v.substr(0, arroba);
+    string dominio = v.substr(arroba + 1);
+
+    // Parte local
+    if (local.empty() || local.size() > 64) {
+        throw invalid_argument("Email invalido.");
+    }
+    for (size_t i = 0; i < local.size(); i++) {
+        char c = local[i];
+        if (c == '.' || c == '-') {
+            if (i == 0 || i + 1 == local.size()) {
+                throw invalid_argument("Email invalido.");
+            }
+            if (!ehLetraMinuscula(local[i + 1]) && !ehDigito(local[i + 1])) {
+                throw invalid_argument("Email invalido.");
+            }
+        } else if (!ehLetraMinuscula(c) && !ehDigito(c)) {
+            throw invalid_argument("Email invalido.");
+        }
+    }
+
+    // Dominio
+    if (dominio.empty() || dominio.size() > 255) {
+        throw invalid_argument("Email invalido.");
+    }
+    size_t ini = 0;
+    while (true) {
+        size_t pos = dominio.find('.', ini);
+        string parte = dominio.substr(ini, pos == string::npos ? string::npos : pos - ini);
+        if (parte.empty() || parte.front() == '-' || parte.back() == '-') {
+            throw invalid_argument("Email invalido.");
+        }
+        for (size_t i = 0; i < parte.size(); i++) {
+            char c = parte[i];
+            if (!ehLetraMinuscula(c) && !ehDigito(c) && c != '-') {
+                throw invalid_argument("Email invalido.");
+            }
+        }
+        if (pos == string::npos) {
+            break;
+        }
+        ini = pos + 1;
+    }
+}
+
+void Email::setValor(const string& v) {
+    validar(v);
+    valor = v;
+}
+
+string Email::getValor() const {
+    return valor;
+}
+
+// ------------------------------------------------------------
+// Dominio: Senha
+// Regra: 5 chars alfanumericos, ao menos uma letra e um digito
+// ------------------------------------------------------------
+void Senha::validar(const string& v) {
+    if (v.size() != 5) {
+        throw invalid_argument("Senha invalida.");
+    }
+    bool temLetra = false;
+    bool temDigito = false;
+    for (size_t i = 0; i < v.size(); i++) {
+        if (ehLetra(v[i])) {
+            temLetra = true;
+        } else if (ehDigito(v[i])) {
+            temDigito = true;
+        } else {
+            throw invalid_argument("Senha invalida.");
+        }
+    }
+    if (!temLetra || !temDigito) {
+        throw invalid_argument("Senha invalida.");
+    }
+}
+
+void Senha::setValor(const string& v) {
+    validar(v);
+    valor = v;
+}
+
+string Senha::getValor() const {
+    return valor;
+}
+
+// ------------------------------------------------------------
+// Dominio: Papel
+// Regra: "GESTOR" ou "DESENVOLVEDOR"
+// ------------------------------------------------------------
+void Papel::validar(const string& v) {
+    for (const char* OPCAO : OPCOES) {
+        if (v == OPCAO) {
+            return;
+        }
+    }
+    throw invalid_argument("Papel invalido!");
+}
+
+void Papel::setValor(const string& v) {
+    validar(v);
+    valor = v;
+}
+
+string Papel::getValor() const {
+    return valor;
+}

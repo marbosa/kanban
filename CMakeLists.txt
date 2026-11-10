@@ -11,4 +11,9 @@ add_executable(kanban
         entidades.h
         utilitarios.cpp
         utilitarios.h
+        interfaces.h
+        servico_pessoa.cpp
+        servico_pessoa.h
+        apresentacao_pessoa.cpp
+        apresentacao_pessoa.h
 )
