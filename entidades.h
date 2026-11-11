@@ -52,4 +52,49 @@ class Quadro {
         Limite getLimite() const;
 };
 
+
+// ------------------------------------------------------------
+// Entidade: CartaoDeAtividade
+// Atributos: identificador, nome, descricao, prioridade, estado, tamanho, entrada, inicio, termino
+// ------------------------------------------------------------
+class CartaoDeAtividade {
+    private:
+        Identificador identificador;
+        Nome nome;
+        Texto descricao;
+        Prioridade prioridade;
+        Estado estado;
+        Tamanho tamanho;
+        Timestamp entrada;
+        Timestamp inicio;
+        Timestamp termino;
+    public:
+        void setIdentificador(const Identificador&);
+        Identificador getIdentificador() const;
+
+        void setNome(const Nome&);
+        Nome getNome() const;
+
+        void setDescricao(const Texto&);
+        Texto getDescricao() const;
+
+        void setPrioridade(const Prioridade&);
+        Prioridade getPrioridade() const;
+
+        void setEstado(const Estado&);
+        Estado getEstado() const;
+
+        void setTamanho(const Tamanho&);
+        Tamanho getTamanho() const;
+
+        void setInicio(const Timestamp&);
+        Timestamp getInicio() const;
+
+        void setTermino(const Timestamp&);
+        Timestamp getTermino() const;
+
+        void setEntrada(const Timestamp&);
+        Timestamp getEntrada() const;
+};
+
 #endif //KANBAN_ENTIDADES_H
