@@ -1,3 +1,8 @@
+/**
+ * @file dominios.cpp
+ * @brief Implementação das classes de dominios
+ */
+
 #include "dominios.h"
 #include "utilitarios.h"
 #include <stdexcept>
