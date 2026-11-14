@@ -1,0 +1,25 @@
+# Projeto
+PROJECT_NAME           = "Kanban"
+PROJECT_BRIEF          = "Sistema de apoio a gestao de projetos com o metodo Kanban"
+OUTPUT_DIRECTORY       = docs
+OUTPUT_LANGUAGE        = Brazilian
+INPUT_ENCODING         = UTF-8
+
+# Entrada
+INPUT                  = .
+RECURSIVE              = NO
+FILE_PATTERNS          = *.cpp *.h
+EXCLUDE                = cmake-build-debug
+
+# Extracao
+EXTRACT_ALL            = NO
+WARN_IF_UNDOCUMENTED   = YES
+WARN_LOGFILE           = doxygen_avisos.txt
+
+# Saida
+GENERATE_HTML          = YES
+GENERATE_LATEX         = NO
+
+#Diagrama
+HAVE_DOT               = YES
+CLASS_GRAPH = YES
