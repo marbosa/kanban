@@ -1,3 +1,7 @@
+/**
+ * @file entidades.cpp
+ * @brief Implementação das classes de Entidades do sistema Kanban
+ */
 #include "entidades.h"
 
 // ------------------------------------------------------------
