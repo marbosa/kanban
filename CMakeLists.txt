@@ -11,4 +11,5 @@ add_executable(kanban
         entidades.h
         utilitarios.cpp
         utilitarios.h
+        interfaces.h
 )
