@@ -8,6 +8,93 @@
 
 #include "dominios.h"
 #include "entidades.h"
+#include <list>
+
+/**
+ * @brief Interface dos serviços de pessoa
+ *
+ * Especifica os serviços de pessoa providos pela camada de serviço e usados pela camada de apresentação, incluindo a autenticação de usuário
+ */
+class IServicosPessoas {
+    public:
+        virtual ~IServicosPessoas() = default;
+
+        /**
+         * @brief Cria uma pessoa (cria a conta do usuário)
+         * @param pessoa Pessoa a ser criada
+         * @retval true Pessoa criada com sucesso
+         * @retval false Pessoa já existe ou dados inconsistentes
+         */
+        virtual bool criar(const Pessoa& pessoa) = 0;
+
+        /**
+         * @brief Lê os dados de uma pessoa
+         * @param pessoa Ponteiro para a pessoa, que entra com o email e sai com os dados preenchidos
+         * @retval true Pessoa encontrada
+         * @retval false Pessoa não encontrada
+         */
+        virtual bool ler(Pessoa* pessoa) = 0;
+
+        /**
+         * @brief Atualiza os dados de uma pessoa
+         *
+         * O email identifica a pessoa e não pode ser alterado
+         *
+         * @param pessoa Pessoa com o email da pessoa existente e os novos dados
+         * @retval true Pessoa atualizada com sucesso
+         * @retval false Pessoa não encontrada ou dados inconsistentes
+         */
+        virtual bool atualizar(const Pessoa& pessoa) = 0;
+
+        /**
+         * @brief Exclui uma pessoa
+         * @param email Email da pessoa a ser excluída
+         * @retval true Pessoa excluída com sucesso
+         * @retval false Pessoa não encontrada ou exclusão causaria inconsistência
+         */
+        virtual bool excluir(const Email& email) = 0;
+
+        /**
+         * @brief Lista os identificadores (emails) das pessoas cadastradas
+         * @param[out] emails Lista que recebe o email de cada pessoa cadastrada
+         * @retval true Listagem realizada com sucesso
+         * @retval false Falha na listagem
+         */
+        virtual bool listar(list<Email>* emails) = 0;
+
+        /**
+         * @brief Autentica um usuário
+         * @param[in] email Email informado pelo usuário
+         * @param[in] senha Senha informada pelo usuário
+         * @param[out] papel Papel do usuário autenticado
+         * @retval true Usuário autenticado com sucesso
+         * @retval false Pessoa não encontrada ou senha incorreta
+         */
+        virtual bool autenticar(const Email& email, const Senha& senha, Papel* papel) = 0;
+};
+
+/**
+ * @brief Interface da apresentação de pessoas
+ *
+ * Especifica o serviço de interação com o usuário para pessoas
+ */
+class IUPessoas {
+    public:
+        virtual ~IUPessoas() = default;
+
+        /**
+         * @brief Executa a interação com o usuário para pessoas
+         * @retval true Interação concluída com sucesso
+         * @retval false Falha durante a interação
+         */
+        virtual bool executar() = 0;
+
+        /**
+         * @brief Define a controladora de serviços de pessoa
+         * @param cntr Ponteiro para a controladora que realiza IServicosPessoas
+         */
+        virtual void setCntrServicosPessoas(IServicosPessoas* cntr) = 0;
+};
 
 /**
  * @brief Interface dos serviços de quadro
