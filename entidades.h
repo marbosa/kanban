@@ -270,4 +270,69 @@ class CartaoDeAtividade {
         Timestamp getTermino() const;
 };
 
+/**
+ * @brief Entidade Pessoa
+ *
+ * Representa um usuário do sistema, que pode ser gestor ou desenvolvedor. O email é a chave primária e, por isso, não deve ser alterado depois do cadastro
+ *
+ * Atributos: email; nome; senha; papel
+ *
+ * Métodos: setEmail e getEmail; setNome e getNome; setSenha e getSenha; setPapel e getPapel
+ */
+class Pessoa {
+    private:
+        Email email;
+        Nome nome;
+        Senha senha;
+        Papel papel;
+    public:
+        /**
+         * @brief Define o email da pessoa (chave primária)
+         * @param email Email da pessoa
+         */
+        void setEmail(const Email& email);
+
+        /**
+         * @brief Obtém o email da pessoa
+         * @return Email da pessoa
+         */
+        Email getEmail() const;
+
+        /**
+         * @brief Define o nome da pessoa
+         * @param nome Nome da pessoa
+         */
+        void setNome(const Nome& nome);
+
+        /**
+         * @brief Obtém o nome da pessoa
+         * @return Nome da pessoa
+         */
+        Nome getNome() const;
+
+        /**
+         * @brief Define a senha da pessoa
+         * @param senha Senha da pessoa
+         */
+        void setSenha(const Senha& senha);
+
+        /**
+         * @brief Obtém a senha da pessoa
+         * @return Senha da pessoa
+         */
+        Senha getSenha() const;
+
+        /**
+         * @brief Define o papel da pessoa
+         * @param papel Papel da pessoa (GESTOR ou DESENVOLVEDOR)
+         */
+        void setPapel(const Papel& papel);
+
+        /**
+         * @brief Obtém o papel da pessoa
+         * @return Papel da pessoa
+         */
+        Papel getPapel() const;
+};
+
 #endif // KANBAN_ENTIDADES_H
